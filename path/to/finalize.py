@@ -20,6 +20,8 @@ def generate_ai_report():
 
 def main():
     generate_ai_report()
+    # Automatically open the PDF after saving
+    os.system('cmd.exe /c start KI_Ergebnis.pdf')
 
 if __name__ == '__main__':
     main()
