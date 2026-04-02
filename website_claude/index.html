@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Café Herzberg in Berlin-Schöneberg — Frühstück, Brunch und mehr. Täglich frisch, herzlich und gemütlich.">
+  <meta name="theme-color" content="#2B2B2B">
+  <title>Café Herzberg — breakfast &amp; more | Berlin-Schöneberg</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Café Herzberg — breakfast & more">
+  <meta property="og:description" content="Frühstück, Brunch und mehr in Berlin-Schöneberg.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/carousel.css">
+  <link rel="stylesheet" href="css/cookie.css">
+
+  <style>
+    /* Inline critical: prevent FOUC */
+    body { visibility: hidden; }
+    body.ready { visibility: visible; }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     SKIP LINK (Accessibility)
+     ============================================================ -->
+<a href="#main-content" class="visually-hidden focusable" style="
+  position:absolute;top:-40px;left:0;background:var(--color-gold);
+  color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;
+  transition:top .2s;font-weight:600;
+">Zum Inhalt springen</a>
+<style>.visually-hidden.focusable:focus { top: 0; }</style>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <nav class="nav-inner" aria-label="Hauptnavigation">
+
+      <!-- Logo -->
+      <a href="index.html" class="nav-logo" aria-label="Café Herzberg — Startseite">
+        <img src="assets/logo.png" alt="Café Herzberg Logo" width="52" height="52">
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Café Herzberg</span>
+          <span class="nav-logo-claim">breakfast &amp; more</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="nav-links" role="list">
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#speisekarte">Speisekarte</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+
+      <!-- Desktop CTA -->
+      <div class="nav-cta">
+        <a href="#kontakt" class="btn btn-primary">Reservieren</a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<nav class="nav-mobile" id="mobile-menu" aria-label="Mobilnavigation" aria-hidden="true">
+  <button class="nav-mobile-close" aria-label="Menü schließen">✕</button>
+  <a href="#ueber-uns">Über uns</a>
+  <a href="#speisekarte">Speisekarte</a>
+  <a href="#galerie">Galerie</a>
+  <a href="#kontakt">Kontakt</a>
+  <a href="#kontakt" class="btn btn-primary" style="margin-top:8px">Reservieren</a>
+</nav>
+
+<!-- ============================================================
+     MAIN
+     ============================================================ -->
+<main id="main-content">
+
+  <!-- ── HERO CAROUSEL ────────────────────────────────────────── -->
+  <section class="hero" aria-label="Hero Karussell">
+
+    <div class="carousel-track" role="region" aria-roledescription="carousel" aria-label="Willkommensbilder">
+
+      <!-- Slide 1 -->
+      <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="Slide 1 von 3">
+        <img
+          class="slide-bg"
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=80&auto=format&fit=crop"
+          alt="Gemütliche Café-Atmosphäre am Morgen"
+          loading="eager"
+          fetchpriority="high"
+        >
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-label">Berlin-Schöneberg</span>
+          <h1 class="slide-title">Guten Morgen,<br>Schöneberg.</h1>
+          <p class="slide-sub">Starte deinen Tag mit frischem Frühstück, duftendem Kaffee und einem Ort, der sich sofort wie zuhause anfühlt.</p>
+          <div class="slide-cta">
+            <a href="#speisekarte" class="btn btn-primary">Zur Speisekarte →</a>
+            <a href="#ueber-uns" class="btn btn-outline-light" style="margin-left:12px">Mehr erfahren</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 von 3">
+        <img
+          class="slide-bg"
+          src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=1600&q=80&auto=format&fit=crop"
+          alt="Frisches Frühstück mit Croissant und Kaffee"
+          loading="lazy"
+        >
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-label">Täglich frisch</span>
+          <h2 class="slide-title">Frisch.<br>Warm. Täglich.</h2>
+          <p class="slide-sub">Handgemachte Speisen aus regionalen Zutaten — weil das beste Frühstück das ist, das man mit Zeit genießt.</p>
+          <div class="slide-cta">
+            <a href="#ueber-uns" class="btn btn-primary">Über uns →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 von 3">
+        <img
+          class="slide-bg"
+          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80&auto=format&fit=crop"
+          alt="Helles Café-Interieur mit Holzmöbeln"
+          loading="lazy"
+        >
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-label">Herzlich willkommen</span>
+          <h2 class="slide-title">Wo der<br>Tag beginnt.</h2>
+          <p class="slide-sub">Ein Ort für Morgenrituale, Gespräche und die kleine Auszeit mittendrin — mitten im Herzen von Schöneberg.</p>
+          <div class="slide-cta">
+            <a href="#kontakt" class="btn btn-primary">Jetzt reservieren →</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.carousel-track -->
+
+    <!-- Dots -->
+    <div class="carousel-dots" role="tablist" aria-label="Karussell-Navigation">
+      <button class="carousel-dot active" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
+      <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Slide 2"></button>
+      <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="carousel-progress" role="presentation"></div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-arrow"></div>
+      <span>Scroll</span>
+    </div>
+
+  </section>
+
+  <!-- ── ÜBER UNS ──────────────────────────────────────────────── -->
+  <section id="ueber-uns" class="section">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=900&q=80&auto=format&fit=crop"
+            alt="Barista bereitet Kaffee im Café Herzberg vor"
+            loading="lazy"
+            width="600"
+            height="480"
+          >
+          <div class="about-badge" aria-label="Seit 2015 in Schöneberg">
+            Seit<br>2015<br>dabei
+          </div>
+        </div>
+
+        <div class="about-content">
+          <div>
+            <span class="section-label">Über uns</span>
+            <h2>Ein Café mit Herz<br>mitten in Schöneberg</h2>
+            <div class="gold-divider" style="margin: 16px 0 0;"></div>
+          </div>
+          <p>
+            Das Café Herzberg ist mehr als ein Ort zum Frühstücken — es ist ein Zuhause auf Zeit.
+            Seit unserer Eröffnung in Schöneberg empfangen wir jeden Gast so, wie er es verdient:
+            herzlich, entspannt und mit einer Tasse des besten Kaffees der Kiez.
+          </p>
+          <p>
+            Wir glauben daran, dass der Morgen den Ton für den ganzen Tag setzt.
+            Deshalb verwenden wir nur frische, saisonale Zutaten von lokalen Partnern
+            und backen unser Gebäck täglich frisch.
+          </p>
+
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-icon" aria-hidden="true">☕</div>
+              <span class="about-feature-text">Specialty Coffee</span>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon" aria-hidden="true">🌿</div>
+              <span class="about-feature-text">Regionale Zutaten</span>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon" aria-hidden="true">🥐</div>
+              <span class="about-feature-text">Täglich frisch gebacken</span>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon" aria-hidden="true">🐾</div>
+              <span class="about-feature-text">Hundefreundlich</span>
+            </div>
+          </div>
+
+          <div>
+            <a href="#speisekarte" class="btn btn-primary">Unsere Speisekarte →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SPEISEKARTE ───────────────────────────────────────────── -->
+  <section id="speisekarte" class="section">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="section-label">Speisekarte</span>
+        <h2>Was wir anbieten</h2>
+        <div class="gold-divider"></div>
+        <p style="margin-top:16px">Frisch zubereitet, täglich wechselnd — genuss ohne Kompromisse.</p>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="menu-tabs" role="tablist" aria-label="Speisekarte-Kategorien">
+        <button class="menu-tab active" data-tab="fruehstueck" role="tab" aria-selected="true"  aria-controls="menu-fruehstueck">Frühstück</button>
+        <button class="menu-tab"        data-tab="mittag"      role="tab" aria-selected="false" aria-controls="menu-mittag">Mittag & Snacks</button>
+        <button class="menu-tab"        data-tab="getraenke"   role="tab" aria-selected="false" aria-controls="menu-getraenke">Getränke</button>
+        <button class="menu-tab"        data-tab="kuchen"      role="tab" aria-selected="false" aria-controls="menu-kuchen">Kuchen & Süßes</button>
+      </div>
+
+      <!-- Frühstück -->
+      <div class="menu-panel active" id="menu-fruehstueck" role="tabpanel" aria-labelledby="">
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Großes Frühstück</span>
+            <span class="menu-card-price">12,90 €</span>
+          </div>
+          <p class="menu-card-desc">Aufschnitt, Käse, Ei nach Wahl, Brot, Butter, Marmelade, Honig und ein Heißgetränk nach Wahl.</p>
+          <span class="menu-badge">Beliebt</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Avocado Toast</span>
+            <span class="menu-card-price">9,50 €</span>
+          </div>
+          <p class="menu-card-desc">Sauerteigbrot mit Avocadocreme, Poached Egg, Cherry-Tomaten und Chili-Flocken.</p>
+          <span class="menu-badge">Vegetarisch</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Granola Bowl</span>
+            <span class="menu-card-price">8,50 €</span>
+          </div>
+          <p class="menu-card-desc">Hausgemachtes Granola mit griechischem Joghurt, saisonalem Obst und Honig.</p>
+          <span class="menu-badge">Vegan möglich</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Pancakes</span>
+            <span class="menu-card-price">10,50 €</span>
+          </div>
+          <p class="menu-card-desc">Fluffige Buttermilch-Pancakes mit Ahornsirup, Beeren und Crème fraîche.</p>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Rührei mit Lachs</span>
+            <span class="menu-card-price">11,90 €</span>
+          </div>
+          <p class="menu-card-desc">Cremiges Rührei mit geräuchertem Lachs, Schnittlauch auf geröstetem Vollkornbrot.</p>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Mini-Frühstück</span>
+            <span class="menu-card-price">7,50 €</span>
+          </div>
+          <p class="menu-card-desc">Kleines Brötchen, Butter, Marmelade, ein Heißgetränk — für den schnellen Start.</p>
+        </div>
+      </div>
+
+      <!-- Mittag & Snacks -->
+      <div class="menu-panel" id="menu-mittag" role="tabpanel">
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Quiche des Tages</span>
+            <span class="menu-card-price">8,90 €</span>
+          </div>
+          <p class="menu-card-desc">Täglich frisch gebackene Quiche — je nach Saison und Angebot. Frag uns nach der aktuellen Sorte.</p>
+          <span class="menu-badge">Täglich frisch</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Suppe des Tages</span>
+            <span class="menu-card-price">7,50 €</span>
+          </div>
+          <p class="menu-card-desc">Hausgemachte Suppe mit Brot — wärmend, sättigend und jeden Tag anders.</p>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Club Sandwich</span>
+            <span class="menu-card-price">10,90 €</span>
+          </div>
+          <p class="menu-card-desc">Toastbrot mit Hähnchenbrust, Bacon, Ei, Salat, Tomate und Aioli. Serviert mit Salatbeilage.</p>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Veggie Bowl</span>
+            <span class="menu-card-price">11,50 €</span>
+          </div>
+          <p class="menu-card-desc">Quinoa, geröstete Kürbiskerne, saisonales Gemüse, Feta und Tahini-Dressing.</p>
+          <span class="menu-badge">Vegetarisch</span>
+        </div>
+      </div>
+
+      <!-- Getränke -->
+      <div class="menu-panel" id="menu-getraenke" role="tabpanel">
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Espresso</span>
+            <span class="menu-card-price">2,50 €</span>
+          </div>
+          <p class="menu-card-desc">Single Origin Specialty Coffee — direkt von kleinen Röstereien aus Berlin.</p>
+          <span class="menu-badge">Specialty Coffee</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Flat White</span>
+            <span class="menu-card-price">4,20 €</span>
+          </div>
+          <p class="menu-card-desc">Doppelter Ristretto mit samtiger Milch — für alle, die es stark und smooth mögen.</p>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Matcha Latte</span>
+            <span class="menu-card-price">5,20 €</span>
+          </div>
+          <p class="menu-card-desc">Zeremonieller Matcha mit aufgeschäumter Hafer- oder Vollmilch.</p>
+          <span class="menu-badge">Vegan möglich</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Frisch gepresster OJ</span>
+            <span class="menu-card-price">4,50 €</span>
+          </div>
+          <p class="menu-card-desc">Täglich frisch gepresster Orangensaft — vitaminreich und erfrischend.</p>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Kräutertee</span>
+            <span class="menu-card-price">3,80 €</span>
+          </div>
+          <p class="menu-card-desc">Auswahl aus verschiedenen Bio-Kräutertees, serviert mit Honig.</p>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Cold Brew</span>
+            <span class="menu-card-price">4,80 €</span>
+          </div>
+          <p class="menu-card-desc">12 Stunden kalt gebrühter Kaffee, serviert über Eis — sanft, intensiv, erfrischend.</p>
+        </div>
+      </div>
+
+      <!-- Kuchen & Süßes -->
+      <div class="menu-panel" id="menu-kuchen" role="tabpanel">
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Käsekuchen</span>
+            <span class="menu-card-price">4,50 €</span>
+          </div>
+          <p class="menu-card-desc">Cremiger Berliner Käsekuchen — nach Hausrezept, täglich frisch gebacken.</p>
+          <span class="menu-badge">Hausrezept</span>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Croissant</span>
+            <span class="menu-card-price">3,20 €</span>
+          </div>
+          <p class="menu-card-desc">Butteriges Croissant, frisch gebacken — pur oder mit Marmelade und Butter.</p>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Schokoladentarte</span>
+            <span class="menu-card-price">5,50 €</span>
+          </div>
+          <p class="menu-card-desc">Dunkle Schokolade auf knusprigem Mürbeteig, mit Fleur de Sel.</p>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <span class="menu-card-name">Zimtschnecke</span>
+            <span class="menu-card-price">3,80 €</span>
+          </div>
+          <p class="menu-card-desc">Handgezogene Zimtschnecke mit Frischkäse-Glasur — ein Klassiker.</p>
+          <span class="menu-badge">Beliebt</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── GALERIE ───────────────────────────────────────────────── -->
+  <section id="galerie" class="section" style="background: var(--color-surface);">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="section-label">Galerie</span>
+        <h2>Einblicke ins Herzberg</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" aria-label="Café-Atmosphäre öffnen">
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=900&q=80&auto=format&fit=crop" alt="Gemütliche Café-Atmosphäre mit Holztischen" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+        </div>
+        <div class="gallery-item" aria-label="Frühstück öffnen">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&auto=format&fit=crop" alt="Frühstücksteller mit Avocado und Ei" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+        </div>
+        <div class="gallery-item" aria-label="Kaffeezubereitung öffnen">
+          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&q=80&auto=format&fit=crop" alt="Barista gießt Latte Art" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+        </div>
+        <div class="gallery-item" aria-label="Kuchen öffnen">
+          <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=900&q=80&auto=format&fit=crop" alt="Frisch gebackener Kuchen auf Holztablett" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+        </div>
+        <div class="gallery-item" aria-label="Café-Eingang öffnen">
+          <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=80&auto=format&fit=crop" alt="Helles Café-Interieur mit Pflanzen" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Bild-Vollansicht">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Schließen">✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- ── KONTAKT ───────────────────────────────────────────────── -->
+  <section id="kontakt" class="section">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="section-label">Kontakt</span>
+        <h2>Besucht uns</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="contact-info">
+
+          <div class="contact-block">
+            <h4>Adresse</h4>
+            <p>
+              Eisenacher Str. 3a<br>
+              10777 Berlin-Schöneberg
+            </p>
+          </div>
+
+          <div class="contact-block">
+            <h4>Öffnungszeiten</h4>
+            <div class="hours-grid">
+              <span class="hours-day">Mo – Fr</span><span>08:00 – 18:00 Uhr</span>
+              <span class="hours-day">Sa – So</span><span>09:00 – 17:00 Uhr</span>
+            </div>
+          </div>
+
+          <div class="contact-block">
+            <h4>Telefon</h4>
+            <a href="tel:+493091568905">030 91568905</a>
+          </div>
+
+          <div class="contact-block">
+            <h4>E-Mail</h4>
+            <a href="mailto:info@cafe-herzberg.de">info@cafe-herzberg.de</a>
+          </div>
+
+          <div>
+            <a href="tel:+493091568905" class="btn btn-primary">Jetzt anrufen</a>
+          </div>
+
+        </div>
+
+        <!-- Google Maps Embed Platzhalter -->
+        <div class="map-wrapper">
+          <iframe
+            src="https://maps.google.com/maps?q=Eisenacher+Str.+3a,+10777+Berlin&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Standort Café Herzberg in Berlin-Schöneberg"
+          ></iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+
+      <div class="footer-logo">
+        <img src="assets/logo.png" alt="Café Herzberg" width="40" height="40">
+        <span class="footer-brand">Café Herzberg</span>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer-Navigation">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+
+    </div>
+    <p class="footer-copy">
+      &copy; <span id="footer-year">2025</span> Café Herzberg · Berlin-Schöneberg · Alle Rechte vorbehalten
+    </p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     COOKIE BANNER
+     ============================================================ -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen">
+  <div class="container">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <p>
+          Wir verwenden Cookies, um dir das beste Erlebnis auf unserer Website zu bieten.
+          Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn-minimal" id="cookie-minimal">Nur notwendige</button>
+        <button class="cookie-btn cookie-btn-accept"  id="cookie-accept">Alle akzeptieren</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/carousel.js" defer></script>
+<script src="js/cookie.js"   defer></script>
+<script src="js/nav.js"      defer></script>
+<script>
+  // Set current year in footer
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+  // Remove FOUC guard
+  document.body.classList.add('ready');
+</script>
+
+</body>
+</html>

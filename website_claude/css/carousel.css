@@ -1,0 +1,248 @@
+/* ============================================================
+   CAFÉ HERZBERG — Hero Carousel
+   Vollbild-Fade mit gestaffeltem Text-Einblenden
+   ============================================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+}
+
+/* --- Slides --- */
+.carousel-track {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  pointer-events: none;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- Background Image --- */
+.slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 6s ease;
+}
+
+.carousel-slide.active .slide-bg {
+  transform: scale(1);
+}
+
+/* --- Gradient Overlay --- */
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.25) 0%,
+    rgba(0,0,0,.15) 40%,
+    rgba(0,0,0,.55) 100%
+  );
+}
+
+/* --- Slide Content --- */
+.slide-content {
+  position: absolute;
+  bottom: 18%;
+  left: 0;
+  right: 0;
+  padding: 0 24px;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.slide-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+  margin-bottom: 14px;
+}
+
+.slide-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease 0.45s, transform 0.7s ease 0.45s;
+  margin-bottom: 16px;
+}
+
+.slide-sub {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: rgba(255,255,255,.85);
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease 0.7s, transform 0.6s ease 0.7s;
+  margin-bottom: 32px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slide-cta {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease 0.95s, transform 0.5s ease 0.95s;
+}
+
+/* Activate text when slide is active */
+.carousel-slide.active .slide-label,
+.carousel-slide.active .slide-title,
+.carousel-slide.active .slide-sub,
+.carousel-slide.active .slide-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reset on inactive slide */
+.carousel-slide:not(.active) .slide-label,
+.carousel-slide:not(.active) .slide-title,
+.carousel-slide:not(.active) .slide-sub,
+.carousel-slide:not(.active) .slide-cta {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: none;
+}
+
+/* --- Dots Navigation --- */
+.carousel-dots {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: rgba(255,255,255,.45);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  min-width: 8px;
+  min-height: 8px;
+}
+
+/* Larger invisible hit area (ui-ux-pro-max: 44px touch target) */
+.carousel-dot::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  right: -18px;
+  bottom: -18px;
+}
+
+.carousel-dot { position: relative; }
+
+.carousel-dot.active {
+  background: #fff;
+  width: 28px;
+}
+
+.carousel-dot:hover {
+  background: rgba(255,255,255,.8);
+}
+
+/* --- Progress Bar --- */
+.carousel-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--color-gold);
+  width: 0%;
+  transition: width linear;
+  z-index: 10;
+}
+
+/* --- Scroll Indicator --- */
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,.6);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: 30px;
+  border: 2px solid rgba(255,255,255,.5);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.scroll-arrow::after {
+  content: '';
+  width: 4px;
+  height: 8px;
+  background: rgba(255,255,255,.7);
+  border-radius: 2px;
+  animation: scrollBounce 1.8s infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(6px); opacity: 0.4; }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .slide-content {
+    bottom: 14%;
+    text-align: left;
+  }
+
+  .slide-sub { margin-left: 0; margin-right: 0; }
+
+  .scroll-indicator { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero { min-height: 480px; }
+}

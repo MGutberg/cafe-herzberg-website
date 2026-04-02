@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+.npm
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.suo
+*.user
+
+# Logs
+*.log
+
+# Temp
+*.tmp
+*.bak
+
+# Skills (lokal installiert, nicht im Repo)
+.agents/
+
+# Claude intern
+.claude/settings.local.json

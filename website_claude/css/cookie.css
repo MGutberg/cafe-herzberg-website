@@ -1,0 +1,97 @@
+/* ============================================================
+   CAFÉ HERZBERG — Cookie Banner (DSGVO)
+   ============================================================ */
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1500;
+  background: var(--color-dark);
+  color: #fff;
+  padding: 20px 0;
+  box-shadow: 0 -4px 24px rgba(0,0,0,.2);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cookie-banner.visible {
+  transform: translateY(0);
+}
+
+.cookie-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cookie-text {
+  flex: 1;
+  min-width: 260px;
+}
+
+.cookie-text p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,.8);
+  line-height: 1.55;
+  max-width: none;
+}
+
+.cookie-text a {
+  color: var(--color-gold-light);
+  text-decoration: underline;
+  transition: color var(--transition);
+}
+
+.cookie-text a:hover {
+  color: var(--color-gold);
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.cookie-btn {
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  min-height: 44px;
+  border: 2px solid transparent;
+}
+
+.cookie-btn-accept {
+  background: var(--color-gold);
+  color: #fff;
+  border-color: var(--color-gold);
+}
+
+.cookie-btn-accept:hover {
+  background: #b8861e;
+  border-color: #b8861e;
+}
+
+.cookie-btn-minimal {
+  background: transparent;
+  color: rgba(255,255,255,.75);
+  border-color: rgba(255,255,255,.3);
+}
+
+.cookie-btn-minimal:hover {
+  border-color: rgba(255,255,255,.6);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .cookie-inner { flex-direction: column; align-items: flex-start; }
+  .cookie-actions { width: 100%; }
+  .cookie-btn { flex: 1; text-align: center; justify-content: center; }
+}
