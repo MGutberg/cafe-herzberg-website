@@ -19,8 +19,6 @@ desktop.ini
 *.tmp
 *.bak
 
-# Skills (lokal installiert, nicht im Repo)
+# Skills & Claude intern (lokal, nicht im Repo)
 .agents/
-
-# Claude intern
-.claude/settings.local.json
+.claude/
