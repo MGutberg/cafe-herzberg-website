@@ -1,21 +1,11 @@
 <?php
 get_header();
 
-// Elementor Pro Theme Builder: Falls ein Template für diese Seite zugewiesen ist, rendert Elementor den Inhalt
-if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_location( 'single' ) ) {
+// Wenn die Seite mit Elementor gebaut wurde, rendert Elementor den Inhalt
+if ( get_post_meta( get_queried_object_id(), '_elementor_edit_mode', true ) === 'builder' ) {
+    while ( have_posts() ) { the_post(); the_content(); }
     get_footer();
     return;
-}
-
-// Falls die Seite direkt "Mit Elementor bearbeiten" geöffnet wurde (ohne Theme Builder Template)
-if ( class_exists( '\Elementor\Plugin' ) && have_posts() ) {
-    the_post();
-    if ( \Elementor\Plugin::$instance->db->is_built_with_elementor( get_the_ID() ) ) {
-        the_content();
-        get_footer();
-        return;
-    }
-    rewind_posts();
 }
 
 $slide_fallbacks = [
