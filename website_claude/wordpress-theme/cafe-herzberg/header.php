@@ -9,46 +9,40 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<a href="#main-content" class="skip-link"><?php esc_html_e('Zum Inhalt springen', 'cafe-herzberg'); ?></a>
+<a href="#main-content" class="visually-hidden focusable" style="position:absolute;top:-40px;left:0;background:var(--color-gold);color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;transition:top .2s;font-weight:600;">Zum Inhalt springen</a>
+<style>.visually-hidden.focusable:focus{top:0}</style>
 
-<header class="site-header" id="site-header" role="banner">
+<header class="site-header" role="banner">
   <div class="container">
-    <nav class="nav-inner" aria-label="<?php esc_attr_e('Hauptnavigation', 'cafe-herzberg'); ?>">
+    <nav class="nav-inner" aria-label="Hauptnavigation">
 
-      <!-- Logo -->
-      <a href="<?php echo esc_url(home_url('/')); ?>" class="nav-logo" aria-label="<?php esc_attr_e('Café Herzberg — Startseite', 'cafe-herzberg'); ?>">
-        <?php
-        if (has_custom_logo()) {
-            the_custom_logo();
-        } else {
-            echo '<div class="nav-logo-placeholder">CH</div>';
-        }
+      <a href="<?php echo esc_url(home_url('/')); ?>" class="nav-logo" aria-label="Café Herzberg — Startseite">
+        <?php if (has_custom_logo()):
+            $logo_id = get_theme_mod('custom_logo');
+            $logo_url = wp_get_attachment_image_url($logo_id, 'full');
         ?>
+        <img src="<?php echo esc_url($logo_url); ?>" alt="Café Herzberg Logo" width="52" height="52">
+        <?php else: ?>
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/logo.png" alt="Café Herzberg Logo" width="52" height="52">
+        <?php endif; ?>
         <div class="nav-logo-text">
-          <span class="nav-logo-name"><?php bloginfo('name'); ?></span>
+          <span class="nav-logo-name">Café Herzberg</span>
           <span class="nav-logo-claim">breakfast &amp; more</span>
         </div>
       </a>
 
-      <!-- Desktop Navigation -->
-      <?php
-      wp_nav_menu([
-          'theme_location' => 'primary',
-          'container'      => 'ul',
-          'menu_class'     => 'nav-links',
-          'fallback_cb'    => 'herzberg_fallback_nav',
-          'depth'          => 1,
-          'items_wrap'     => '<ul role="list" class="nav-links">%3$s</ul>',
-      ]);
-      ?>
+      <ul class="nav-links" role="list">
+        <li><a href="<?php echo esc_url(home_url('/#ueber-uns')); ?>">Über uns</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#speisekarte')); ?>">Speisekarte</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#galerie')); ?>">Galerie</a></li>
+        <li><a href="<?php echo esc_url(home_url('/#kontakt')); ?>">Kontakt</a></li>
+      </ul>
 
-      <!-- CTA Button -->
       <div class="nav-cta">
-        <a href="#kontakt" class="btn btn-primary"><?php esc_html_e('Reservieren', 'cafe-herzberg'); ?></a>
+        <a href="<?php echo esc_url(home_url('/#kontakt')); ?>" class="btn btn-primary">Reservieren</a>
       </div>
 
-      <!-- Hamburger -->
-      <button class="nav-hamburger" aria-label="<?php esc_attr_e('Menü öffnen', 'cafe-herzberg'); ?>" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
 
@@ -56,25 +50,13 @@
   </div>
 </header>
 
-<!-- Mobile Menu -->
-<nav class="nav-mobile" id="mobile-menu" aria-label="<?php esc_attr_e('Mobilnavigation', 'cafe-herzberg'); ?>" aria-hidden="true">
-  <button class="nav-mobile-close" aria-label="<?php esc_attr_e('Menü schließen', 'cafe-herzberg'); ?>">✕</button>
-  <a href="#ueber-uns"><?php esc_html_e('Über uns', 'cafe-herzberg'); ?></a>
-  <a href="#speisekarte"><?php esc_html_e('Speisekarte', 'cafe-herzberg'); ?></a>
-  <a href="#galerie"><?php esc_html_e('Galerie', 'cafe-herzberg'); ?></a>
-  <a href="#kontakt"><?php esc_html_e('Kontakt', 'cafe-herzberg'); ?></a>
-  <a href="#kontakt" class="btn btn-primary" style="margin-top:8px"><?php esc_html_e('Reservieren', 'cafe-herzberg'); ?></a>
+<nav class="nav-mobile" id="mobile-menu" aria-label="Mobilnavigation" aria-hidden="true">
+  <button class="nav-mobile-close" aria-label="Menü schließen">✕</button>
+  <a href="<?php echo esc_url(home_url('/#ueber-uns')); ?>">Über uns</a>
+  <a href="<?php echo esc_url(home_url('/#speisekarte')); ?>">Speisekarte</a>
+  <a href="<?php echo esc_url(home_url('/#galerie')); ?>">Galerie</a>
+  <a href="<?php echo esc_url(home_url('/#kontakt')); ?>">Kontakt</a>
+  <a href="<?php echo esc_url(home_url('/#kontakt')); ?>" class="btn btn-primary" style="margin-top:8px">Reservieren</a>
 </nav>
 
 <main id="main-content">
-<?php
-
-/** Fallback-Navigation wenn kein Menü gesetzt */
-function herzberg_fallback_nav() {
-    echo '<ul role="list" class="nav-links">';
-    echo '<li><a href="#ueber-uns">Über uns</a></li>';
-    echo '<li><a href="#speisekarte">Speisekarte</a></li>';
-    echo '<li><a href="#galerie">Galerie</a></li>';
-    echo '<li><a href="#kontakt">Kontakt</a></li>';
-    echo '</ul>';
-}

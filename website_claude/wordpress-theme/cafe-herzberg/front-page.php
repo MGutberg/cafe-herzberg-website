@@ -1,20 +1,10 @@
 <?php
-/**
- * Homepage-Template
- * Wenn Elementor Pro aktiv ist und ein Template zugewiesen wurde, übernimmt Elementor.
- * Sonst wird diese PHP-Vorlage gerendert.
- */
-
-// Elementor Pro: Theme Builder übernimmt wenn vorhanden
 if (function_exists('elementor_theme_do_location') && elementor_theme_do_location('single')) {
-    get_header();
-    get_footer();
-    return;
+    get_header(); get_footer(); return;
 }
 
 get_header();
 
-// Fallback-Bildquellen (Unsplash) — werden durch Customizer-Bilder ersetzt
 $slide_fallbacks = [
     1 => 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=80&auto=format&fit=crop',
     2 => 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=1600&q=80&auto=format&fit=crop',
@@ -32,32 +22,24 @@ for ($i = 1; $i <= 3; $i++) {
     ];
 }
 
-// Defaults wenn Customizer noch nicht befüllt
 if (!$slides[1]['titel']) $slides[1] = array_merge($slides[1], ['titel' => 'Guten Morgen, Schöneberg.', 'sub' => 'Starte deinen Tag mit frischem Frühstück, duftendem Kaffee und einem Ort, der sich sofort wie zuhause anfühlt.', 'cta_text' => 'Zur Speisekarte →', 'cta_link' => '#speisekarte']);
 if (!$slides[2]['titel']) $slides[2] = array_merge($slides[2], ['titel' => 'Frisch. Warm. Täglich.', 'sub' => 'Handgemachte Speisen aus regionalen Zutaten — weil das beste Frühstück das ist, das man mit Zeit genießt.', 'cta_text' => 'Über uns →', 'cta_link' => '#ueber-uns']);
 if (!$slides[3]['titel']) $slides[3] = array_merge($slides[3], ['titel' => 'Wo der Tag beginnt.', 'sub' => 'Ein Ort für Morgenrituale, Gespräche und die kleine Auszeit mittendrin — mitten im Herzen von Schöneberg.', 'cta_text' => 'Jetzt reservieren →', 'cta_link' => '#kontakt']);
 
-$about_img = herzberg_about_image(get_template_directory_uri() . '/assets/cafe_innen.jpg');
+$about_img   = herzberg_about_image(get_template_directory_uri() . '/assets/cafe_innen.jpg');
 $about_text1 = herzberg_get('herzberg_about_text1', 'Das Café Herzberg ist mehr als ein Ort zum Frühstücken — es ist ein Zuhause auf Zeit. Seit unserer Eröffnung in Schöneberg empfangen wir jeden Gast so, wie er es verdient: herzlich, entspannt und mit einer Tasse des besten Kaffees im Kiez.');
 $about_text2 = herzberg_get('herzberg_about_text2', 'Wir glauben daran, dass der Morgen den Ton für den ganzen Tag setzt. Deshalb verwenden wir nur frische, saisonale Zutaten von lokalen Partnern und backen unser Gebäck täglich frisch.');
 
-// Speisekarte: Kategorien und Gerichte laden
 $kategorien = get_terms(['taxonomy' => 'speisekarte_kategorie', 'hide_empty' => false, 'orderby' => 'term_order']);
-if (empty($kategorien) || is_wp_error($kategorien)) {
-    $kategorien = [];
-}
+if (empty($kategorien) || is_wp_error($kategorien)) $kategorien = [];
 ?>
 
-<!-- ── HERO KARUSSELL ─────────────────────────────────────── -->
+<!-- HERO -->
 <section class="hero" aria-label="Hero Karussell">
   <div class="carousel-track" role="region" aria-roledescription="carousel" aria-label="Willkommensbilder">
-
     <?php foreach ($slides as $i => $slide): ?>
     <div class="carousel-slide <?php echo $i === 1 ? 'active' : ''; ?>" role="group" aria-roledescription="slide" aria-label="Slide <?php echo $i; ?> von 3">
-      <img class="slide-bg"
-           src="<?php echo esc_url($slide['bild']); ?>"
-           alt="<?php echo esc_attr($slide['titel']); ?>"
-           <?php echo $i === 1 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'; ?>>
+      <img class="slide-bg" src="<?php echo esc_url($slide['bild']); ?>" alt="<?php echo esc_attr($slide['titel']); ?>" <?php echo $i === 1 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'; ?>>
       <div class="slide-overlay"></div>
       <div class="slide-content">
         <span class="slide-label">Berlin-Schöneberg</span>
@@ -69,26 +51,22 @@ if (empty($kategorien) || is_wp_error($kategorien)) {
       </div>
     </div>
     <?php endforeach; ?>
-
   </div>
-
   <div class="carousel-dots" role="tablist" aria-label="Karussell-Navigation">
     <?php for ($i = 1; $i <= 3; $i++): ?>
     <button class="carousel-dot <?php echo $i === 1 ? 'active' : ''; ?>" role="tab" aria-selected="<?php echo $i === 1 ? 'true' : 'false'; ?>" aria-label="Slide <?php echo $i; ?>"></button>
     <?php endfor; ?>
   </div>
   <div class="carousel-progress" role="presentation"></div>
-  <div class="scroll-indicator" aria-hidden="true">
-    <div class="scroll-arrow"></div><span>Scroll</span>
-  </div>
+  <div class="scroll-indicator" aria-hidden="true"><div class="scroll-arrow"></div><span>Scroll</span></div>
 </section>
 
-<!-- ── ÜBER UNS ──────────────────────────────────────────── -->
+<!-- ÜBER UNS -->
 <section id="ueber-uns" class="section">
   <div class="container">
     <div class="about-grid">
       <div class="about-image">
-        <img src="<?php echo esc_url($about_img); ?>" alt="Café Herzberg Innenansicht" loading="lazy" width="600" height="480">
+        <img src="<?php echo esc_url($about_img); ?>" alt="Café Herzberg Innenansicht" loading="lazy" width="600" height="480" style="object-fit:cover;object-position:center;">
         <div class="about-badge" aria-label="Seit 2015 in Schöneberg">Seit<br>2015<br>dabei</div>
       </div>
       <div class="about-content">
@@ -111,7 +89,7 @@ if (empty($kategorien) || is_wp_error($kategorien)) {
   </div>
 </section>
 
-<!-- ── SPEISEKARTE ───────────────────────────────────────── -->
+<!-- SPEISEKARTE -->
 <section id="speisekarte" class="section" style="background:var(--color-surface)">
   <div class="container">
     <div class="section-header">
@@ -120,21 +98,12 @@ if (empty($kategorien) || is_wp_error($kategorien)) {
       <div class="gold-divider"></div>
       <p style="margin-top:16px">Frisch zubereitet, täglich wechselnd — Genuss ohne Kompromisse.</p>
     </div>
-
     <?php if (!empty($kategorien)): ?>
-
     <div class="menu-tabs" role="tablist" aria-label="Speisekarte-Kategorien">
       <?php foreach ($kategorien as $k => $kat): ?>
-      <button class="menu-tab <?php echo $k === 0 ? 'active' : ''; ?>"
-              data-tab="<?php echo esc_attr($kat->slug); ?>"
-              role="tab"
-              aria-selected="<?php echo $k === 0 ? 'true' : 'false'; ?>"
-              aria-controls="menu-<?php echo esc_attr($kat->slug); ?>">
-        <?php echo esc_html($kat->name); ?>
-      </button>
+      <button class="menu-tab <?php echo $k === 0 ? 'active' : ''; ?>" data-tab="<?php echo esc_attr($kat->slug); ?>" role="tab" aria-selected="<?php echo $k === 0 ? 'true' : 'false'; ?>" aria-controls="menu-<?php echo esc_attr($kat->slug); ?>"><?php echo esc_html($kat->name); ?></button>
       <?php endforeach; ?>
     </div>
-
     <?php foreach ($kategorien as $k => $kat):
         $gerichte = get_posts(['post_type' => 'speisekarte', 'posts_per_page' => -1, 'tax_query' => [['taxonomy' => 'speisekarte_kategorie', 'field' => 'slug', 'terms' => $kat->slug]], 'orderby' => 'menu_order', 'order' => 'ASC']);
     ?>
@@ -148,9 +117,7 @@ if (empty($kategorien) || is_wp_error($kategorien)) {
           <span class="menu-card-name"><?php echo esc_html($gericht->post_title); ?></span>
           <?php if ($preis): ?><span class="menu-card-price"><?php echo esc_html($preis); ?></span><?php endif; ?>
         </div>
-        <?php if ($gericht->post_content): ?>
-        <p class="menu-card-desc"><?php echo esc_html(wp_strip_all_tags($gericht->post_content)); ?></p>
-        <?php endif; ?>
+        <?php if ($gericht->post_content): ?><p class="menu-card-desc"><?php echo esc_html(wp_strip_all_tags($gericht->post_content)); ?></p><?php endif; ?>
         <?php if ($badge): ?><span class="menu-badge"><?php echo esc_html($badge); ?></span><?php endif; ?>
       </div>
       <?php endforeach; else: ?>
@@ -158,19 +125,13 @@ if (empty($kategorien) || is_wp_error($kategorien)) {
       <?php endif; ?>
     </div>
     <?php endforeach; ?>
-
     <?php else: ?>
-    <!-- Fallback: statische Beispieldaten wenn keine Kategorien angelegt -->
-    <p style="text-align:center;color:var(--color-muted)">
-      Speisekarte wird gerade aktualisiert — schau bald wieder vorbei!<br>
-      <small>(Gerichte können im WordPress-Admin unter "Speisekarte" hinzugefügt werden.)</small>
-    </p>
+    <p style="text-align:center;color:var(--color-muted)">Speisekarte wird gerade aktualisiert — schau bald wieder vorbei!</p>
     <?php endif; ?>
-
   </div>
 </section>
 
-<!-- ── GALERIE ───────────────────────────────────────────── -->
+<!-- GALERIE -->
 <section id="galerie" class="section">
   <div class="container">
     <div class="section-header">
@@ -180,14 +141,14 @@ if (empty($kategorien) || is_wp_error($kategorien)) {
     </div>
     <div class="gallery-grid">
       <?php
-      $gallery_images = [
+      $gallery = [
           ['https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=900&q=80&auto=format&fit=crop', 'Gemütliche Café-Atmosphäre'],
           ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&auto=format&fit=crop', 'Frühstücksteller'],
           ['https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&q=80&auto=format&fit=crop', 'Latte Art'],
           ['https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=900&q=80&auto=format&fit=crop', 'Frisch gebackener Kuchen'],
           ['https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=80&auto=format&fit=crop', 'Café-Interieur'],
       ];
-      foreach ($gallery_images as $img): ?>
+      foreach ($gallery as $img): ?>
       <div class="gallery-item" tabindex="0" role="button" aria-label="<?php echo esc_attr($img[1]); ?> öffnen">
         <img src="<?php echo esc_url($img[0]); ?>" alt="<?php echo esc_attr($img[1]); ?>" loading="lazy">
         <div class="gallery-overlay"><span class="gallery-overlay-icon" aria-hidden="true">⊕</span></div>
@@ -203,7 +164,7 @@ if (empty($kategorien) || is_wp_error($kategorien)) {
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<!-- ── KONTAKT ───────────────────────────────────────────── -->
+<!-- KONTAKT -->
 <section id="kontakt" class="section">
   <div class="container">
     <div class="section-header">
@@ -220,10 +181,8 @@ if (empty($kategorien) || is_wp_error($kategorien)) {
         <div class="contact-block">
           <h4>Öffnungszeiten</h4>
           <div class="hours-grid">
-            <span class="hours-day">Mo – Fr</span>
-            <span><?php echo esc_html(herzberg_get('herzberg_oeffnung_woche', '08:00 – 18:00 Uhr')); ?></span>
-            <span class="hours-day">Sa – So</span>
-            <span><?php echo esc_html(herzberg_get('herzberg_oeffnung_wende', '09:00 – 17:00 Uhr')); ?></span>
+            <span class="hours-day">Mo – Fr</span><span><?php echo esc_html(herzberg_get('herzberg_oeffnung_woche', '08:00 – 18:00 Uhr')); ?></span>
+            <span class="hours-day">Sa – So</span><span><?php echo esc_html(herzberg_get('herzberg_oeffnung_wende', '09:00 – 17:00 Uhr')); ?></span>
           </div>
         </div>
         <div class="contact-block">
@@ -241,13 +200,7 @@ if (empty($kategorien) || is_wp_error($kategorien)) {
       </div>
       <div class="map-wrapper">
         <?php $adresse = urlencode(herzberg_get('herzberg_adresse', 'Eisenacher Str. 3a, 10777 Berlin')); ?>
-        <iframe
-          src="https://maps.google.com/maps?q=<?php echo $adresse; ?>&t=&z=16&ie=UTF8&iwloc=&output=embed"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          title="<?php esc_attr_e('Standort Café Herzberg', 'cafe-herzberg'); ?>">
-        </iframe>
+        <iframe src="https://maps.google.com/maps?q=<?php echo $adresse; ?>&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Standort Café Herzberg"></iframe>
       </div>
     </div>
   </div>

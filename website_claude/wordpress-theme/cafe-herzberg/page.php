@@ -1,17 +1,10 @@
-<?php
-/**
- * Generisches Seiten-Template — Elementor Pro übernimmt wenn Template gesetzt
- */
-if (function_exists('elementor_theme_do_location') && elementor_theme_do_location('single')) {
-    return;
-}
-get_header(); ?>
-
-<div class="container legal-page">
-  <?php while (have_posts()): the_post(); ?>
+<?php get_header(); ?>
+<div class="container" style="padding-top:120px;padding-bottom:80px;">
+  <?php if (have_posts()): while (have_posts()): the_post(); ?>
+  <article class="legal-page">
     <h1><?php the_title(); ?></h1>
-    <div class="entry-content"><?php the_content(); ?></div>
-  <?php endwhile; ?>
+    <?php the_content(); ?>
+  </article>
+  <?php endwhile; endif; ?>
 </div>
-
 <?php get_footer(); ?>
