@@ -37,7 +37,7 @@ if (!$slides[1]['titel']) $slides[1] = array_merge($slides[1], ['titel' => 'Gute
 if (!$slides[2]['titel']) $slides[2] = array_merge($slides[2], ['titel' => 'Frisch. Warm. Täglich.', 'sub' => 'Handgemachte Speisen aus regionalen Zutaten — weil das beste Frühstück das ist, das man mit Zeit genießt.', 'cta_text' => 'Über uns →', 'cta_link' => '#ueber-uns']);
 if (!$slides[3]['titel']) $slides[3] = array_merge($slides[3], ['titel' => 'Wo der Tag beginnt.', 'sub' => 'Ein Ort für Morgenrituale, Gespräche und die kleine Auszeit mittendrin — mitten im Herzen von Schöneberg.', 'cta_text' => 'Jetzt reservieren →', 'cta_link' => '#kontakt']);
 
-$about_img = herzberg_about_image('https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=900&q=80&auto=format&fit=crop');
+$about_img = herzberg_about_image(get_template_directory_uri() . '/assets/cafe_innen.jpg');
 $about_text1 = herzberg_get('herzberg_about_text1', 'Das Café Herzberg ist mehr als ein Ort zum Frühstücken — es ist ein Zuhause auf Zeit. Seit unserer Eröffnung in Schöneberg empfangen wir jeden Gast so, wie er es verdient: herzlich, entspannt und mit einer Tasse des besten Kaffees im Kiez.');
 $about_text2 = herzberg_get('herzberg_about_text2', 'Wir glauben daran, dass der Morgen den Ton für den ganzen Tag setzt. Deshalb verwenden wir nur frische, saisonale Zutaten von lokalen Partnern und backen unser Gebäck täglich frisch.');
 
