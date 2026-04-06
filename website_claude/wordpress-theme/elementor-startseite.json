@@ -9,13 +9,15 @@
       "isInner": false,
       "settings": {
         "stretch_section": "section-stretched",
+        "layout": "full_width",
+        "gap": "no",
         "padding": {"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}
       },
       "elements": [
         {
           "id": "hero_col",
           "elType": "column",
-          "settings": {"_column_size": 100},
+          "settings": {"_column_size": 100, "padding": {"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},
           "elements": [
             {
               "id": "hero_slides",
